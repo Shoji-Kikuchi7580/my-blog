@@ -1,0 +1,29 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  currentSlug: string;
+  currentTags: string[];
+  allPosts: CollectionEntry<'posts'>[];
+}
+
+const { currentSlug, currentTags, allPosts } = Astro.props;
+
+const related = allPosts
+  .filter(p => p.id !== currentSlug && p.data.tags.some(t => currentTags.includes(t)))
+  .slice(0, 3);
+---
+
+{related.length > 0 && (
+  <section style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #eee;">
+    <h2 style="font-size: 1.1rem; margin-bottom: 1rem; color: #555;">関連記事</h2>
+    <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.75rem;">
+      {related.map(p => (
+        <li>
+          <a href={`/posts/${p.id}`} style="font-weight: bold;">{p.data.title}</a>
+          <p style="font-size: 0.875rem; color: #666; margin-top: 0.2rem;">{p.data.description}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+)}

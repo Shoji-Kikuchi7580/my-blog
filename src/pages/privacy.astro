@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const today = new Date().toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+<BaseLayout title="プライバシーポリシー" description="当ブログのプライバシーポリシーについて説明します。">
+  <h1 class="page-title">プライバシーポリシー</h1>
+  <div class="prose">
+
+    <h2>広告について</h2>
+    <p>
+      当ブログでは、第三者配信の広告サービス（Googleアドセンスなど）を利用する場合があります。
+      広告配信事業者は、ユーザーの興味に応じた広告を表示するためにCookieを使用することがあります。
+      Cookieを無効にする設定は、お使いのブラウザの設定から行うことができます。
+    </p>
+
+    <h2>アフィリエイトについて</h2>
+    <p>
+      当ブログは、Amazon.co.jpをはじめとする各種アフィリエイトプログラムに参加しています。
+      記事内のリンクから商品を購入いただいた場合、当ブログに紹介料が支払われることがあります。
+      読者の方への費用負担は一切ありません。
+    </p>
+
+    <h2>アクセス解析について</h2>
+    <p>
+      当ブログでは、Googleアナリティクス等のアクセス解析ツールを使用する場合があります。
+      これらのツールはCookieを使用してデータを収集しますが、個人を特定する情報は収集しません。
+    </p>
+
+    <h2>免責事項</h2>
+    <p>
+      当ブログの情報は、正確性・最新性の維持に努めていますが、内容の完全性・正確性を保証するものではありません。
+      当ブログの情報を利用して生じた損害について、当ブログは一切の責任を負いません。
+    </p>
+
+    <h2>著作権</h2>
+    <p>
+      当ブログに掲載されているテキスト・画像等の著作権は、特別な記載がない限り当ブログ運営者に帰属します。
+      無断転載・複製はお断りします。
+    </p>
+
+    <h2>お問い合わせ</h2>
+    <p>
+      プライバシーポリシーに関するお問い合わせは、<a href="/about">プロフィールページ</a>のメールアドレスまでご連絡ください。
+    </p>
+
+    <p class="updated">制定日：{today}</p>
+  </div>
+</BaseLayout>
+
+<style>
+  .page-title { font-size: 1.6rem; margin-bottom: 2rem; }
+  .prose h2 { font-size: 1.15rem; margin: 2rem 0 0.6rem; padding-left: 0.75rem; border-left: 4px solid #0070f3; }
+  .prose p { margin: 0.75rem 0; font-size: 0.95rem; color: #444; }
+  .updated { margin-top: 3rem; font-size: 0.85rem; color: #999; }
+
+  @media (max-width: 600px) {
+    .page-title { font-size: 1.35rem; }
+  }
+</style>

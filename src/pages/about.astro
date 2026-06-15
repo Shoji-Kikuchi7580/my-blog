@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getProfile } from '../lib/profile';
+
+const profile = getProfile();
+---
+<BaseLayout title="プロフィール" description="ブログ運営者のプロフィールページです。">
+  <h1 class="page-title">プロフィール</h1>
+
+  <div class="profile-card">
+    <div class="profile-card__icon">{profile.authorIcon}</div>
+    <div class="profile-card__body">
+      <h2 class="profile-card__name">{profile.authorName}</h2>
+      <p class="profile-card__bio">{profile.authorBio}</p>
+      <ul class="profile-card__list">
+        {profile.topics.map(t => <li>📌 {t}</li>)}
+        <li>📌 連絡先：<a href={`mailto:${profile.email}`}>{profile.email}</a></li>
+      </ul>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .page-title { font-size: 1.6rem; margin-bottom: 1.5rem; }
+  .profile-card { background: #fff; border: 1px solid #eee; border-radius: 12px; padding: 1.75rem; display: flex; gap: 1.5rem; align-items: flex-start; }
+  .profile-card__icon { flex-shrink: 0; width: 80px; height: 80px; border-radius: 50%; background: #e0e8ff; display: flex; align-items: center; justify-content: center; font-size: 2rem; }
+  .profile-card__name { font-size: 1.2rem; margin-bottom: 0.5rem; }
+  .profile-card__bio { color: #555; font-size: 0.95rem; margin-bottom: 1rem; }
+  .profile-card__list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.9rem; color: #444; }
+
+  @media (max-width: 600px) {
+    .page-title { font-size: 1.35rem; }
+    .profile-card { flex-direction: column; align-items: center; text-align: center; padding: 1.25rem; }
+    .profile-card__list { text-align: left; }
+  }
+</style>

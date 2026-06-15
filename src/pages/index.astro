@@ -1,0 +1,43 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const posts = (await getCollection('posts')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+<BaseLayout title="記事一覧">
+  <h1 class="page-title">記事一覧</h1>
+  <ul class="post-list">
+    {posts.map(post => (
+      <li class="post-card">
+        <a href={`/posts/${post.id}`}>
+          <h2 class="post-card__title">{post.data.title}</h2>
+        </a>
+        <p class="post-card__desc">{post.data.description}</p>
+        <div class="post-card__meta">
+          <time>{post.data.pubDate.toLocaleDateString('ja-JP')}</time>
+          {post.data.tags.map(tag => (
+            <a href={`/tags/${tag}`} class="tag">#{tag}</a>
+          ))}
+        </div>
+      </li>
+    ))}
+  </ul>
+</BaseLayout>
+
+<style>
+  .page-title { font-size: 1.6rem; margin-bottom: 1.5rem; }
+  .post-list { list-style: none; display: flex; flex-direction: column; gap: 1.25rem; }
+  .post-card { background: #fff; border: 1px solid #eee; border-radius: 8px; padding: 1.25rem; }
+  .post-card__title { font-size: 1.15rem; margin-bottom: 0.5rem; line-height: 1.5; }
+  .post-card__desc { color: #666; font-size: 0.9rem; margin-bottom: 0.75rem; }
+  .post-card__meta { display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; font-size: 0.8rem; color: #999; }
+  .tag { background: #f0f4ff; color: #0070f3; padding: 0.15rem 0.55rem; border-radius: 4px; }
+
+  @media (max-width: 600px) {
+    .page-title { font-size: 1.35rem; }
+    .post-card { padding: 1rem; }
+    .post-card__title { font-size: 1.05rem; }
+  }
+</style>
