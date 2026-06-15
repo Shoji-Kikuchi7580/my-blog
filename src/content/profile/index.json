@@ -1,13 +1,21 @@
 {
-  "siteTitle": "MY BLOG",
-  "siteDescription": "パート勤務しながら副業・note発信で月10万円を目指すブログ",
-  "authorName": "YOUR NAME",
-  "authorBio": "パート勤務をしながら、副業と情報発信で月10万円の副収入を目指しています。",
+  "siteTitle": "隙間時間でAI×SNS副業",
+  "siteDescription": "パート勤務しながら副業・note発信・AI×SNS活用で月10万円を目指すブログ",
+  "authorName": "日高見五郎",
+  "authorBio": "パート勤務をしながら、副業と情報発信とAI×SNS活用で月10万円の副収入を目指しています。",
   "authorIcon": "🙂",
   "avatarImage": "/avatar.jpg",
   "email": "picbig25@gmail.com",
   "topics": [
-    "副業・note発信のノウハウを発信しています",
-    "ターゲット：副収入を増やしたい方、情報発信を始めたい方"
-  ]
+    "副業・note発信・AI×SNS活用のノウハウを発信しています",
+    "ターゲット：副収入を増やしたい方、AI×SNSで情報発信を始めたい方"
+  ],
+  "social": {
+    "x": "https://x.com/hitakamigoro",
+    "instagram": "https://www.instagram.com/hitakamigiro82",
+    "threads": "https://threads.net/@hitakamigiro82",
+    "note": "https://note.com/brainy_sage6526",
+    "pinterest": "https://jp.pinterest.com/HitakamiGoro",
+    "github": "https://github.com/Shoji-Kikuchi7580"
+  }
 }

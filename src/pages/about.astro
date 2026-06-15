@@ -1,10 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import SocialLinks from '../components/SocialLinks.astro';
 import { getProfile } from '../lib/profile';
 
 const profile = getProfile();
-
-// /public/avatar.jpg または /public/avatar.png があれば画像を使う
 const avatarImage = profile.avatarImage || null;
 ---
 <BaseLayout title="プロフィール" description="ブログ運営者のプロフィールページです。">
@@ -24,44 +23,25 @@ const avatarImage = profile.avatarImage || null;
         {profile.topics.map(t => <li>📌 {t}</li>)}
         <li>📌 連絡先：<a href={`mailto:${profile.email}`}>{profile.email}</a></li>
       </ul>
+      {profile.social && (
+        <div class="profile-card__social">
+          <SocialLinks social={profile.social} size="md" />
+        </div>
+      )}
     </div>
   </div>
 </BaseLayout>
 
 <style>
   .page-title { font-size: 1.6rem; margin-bottom: 1.5rem; }
-
-  .profile-card {
-    background: #fff;
-    border: 1px solid #eee;
-    border-radius: 12px;
-    padding: 1.75rem;
-    display: flex;
-    gap: 1.5rem;
-    align-items: flex-start;
-  }
-  .profile-card__icon {
-    flex-shrink: 0;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    overflow: hidden;
-    background: #e0e8ff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .avatar-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-  }
+  .profile-card { background: #fff; border: 1px solid #eee; border-radius: 12px; padding: 1.75rem; display: flex; gap: 1.5rem; align-items: flex-start; }
+  .profile-card__icon { flex-shrink: 0; width: 100px; height: 100px; border-radius: 50%; overflow: hidden; background: #e0e8ff; display: flex; align-items: center; justify-content: center; }
+  .avatar-img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
   .avatar-emoji { font-size: 2.5rem; }
-
   .profile-card__name { font-size: 1.2rem; margin-bottom: 0.5rem; }
   .profile-card__bio { color: #555; font-size: 0.95rem; margin-bottom: 1rem; }
   .profile-card__list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.9rem; color: #444; }
+  .profile-card__social { margin-top: 1.25rem; }
 
   @media (max-width: 600px) {
     .page-title { font-size: 1.35rem; }
