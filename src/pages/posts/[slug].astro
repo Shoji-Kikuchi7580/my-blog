@@ -44,6 +44,8 @@ const { Content } = await render(post);
   .prose li { margin: 0.4rem 0; }
   .prose strong { color: #111; }
   .prose code { background: #f0f0f0; padding: 0.1em 0.4em; border-radius: 3px; font-size: 0.9em; }
+  .prose img { max-width: 100%; height: auto; border-radius: 8px; margin: 1.5rem auto; display: block; }
+  .prose img + em { display: block; text-align: center; font-size: 0.85rem; color: #999; margin-top: -1rem; margin-bottom: 1rem; }
 
   @media (max-width: 600px) {
     .post-header__title { font-size: 1.35rem; }
