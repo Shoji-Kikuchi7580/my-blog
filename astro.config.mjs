@@ -6,9 +6,12 @@ import keystatic from '@keystatic/astro';
 import markdoc from '@astrojs/markdoc';
 import { SITE } from './src/config';
 
+import cloudflare from '@astrojs/cloudflare';
+
 const isDev = process.argv.includes('dev');
 
 export default defineConfig({
   site: SITE.url,
   integrations: [sitemap(), react(), markdoc(), ...(isDev ? [keystatic()] : [])],
+  adapter: cloudflare(),
 });
