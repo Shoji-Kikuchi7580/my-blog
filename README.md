@@ -1,43 +1,64 @@
-# Astro Starter Kit: Minimal
+# MY BLOG
 
-```sh
-npm create astro@latest -- --template minimal
+ClaudeCodeで自作したAstro製ブログ。Cloudflare Workers上で動作し、GitHubにpushすると自動デプロイされます。
+
+**公開URL:** https://my-blog.picbig25.workers.dev/
+
+---
+
+## 技術スタック
+
+- [Astro](https://astro.build/) — 静的サイトジェネレーター
+- Cloudflare Workers — ホスティング（無料）
+- GitHub連携 — pushで自動デプロイ
+
+---
+
+## ディレクトリ構成
+
+```
+src/
+├── content/
+│   └── posts/        # 記事ファイル（.md）
+├── pages/            # ページ（index, about, contact など）
+├── layouts/          # ベースレイアウト
+├── components/       # 共通コンポーネント
+└── config.ts         # サイト設定（タイトル・著者名など）
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+---
 
-## 🚀 Project Structure
+## 記事の追加方法
 
-Inside of your Astro project, you'll see the following folders and files:
+`src/content/posts/` に `.md` ファイルを作成します。
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```markdown
+---
+title: 記事タイトル
+description: 説明文（トップページや検索結果に表示）
+pubDate: 2026-06-17
+tags:
+  - タグ1
+  - タグ2
+---
+
+本文をここに書く。
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+ファイルを保存してGitHubにpushすると自動でデプロイされます。
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+---
 
-Any static assets, like images, can be placed in the `public/` directory.
+## サイト設定の変更
 
-## 🧞 Commands
+`src/config.ts` を編集するとサイト名・著者名・プロフィールなどを変更できます。
 
-All commands are run from the root of the project, from a terminal:
+---
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## ローカル開発
 
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+```bash
+npm install
+npm run dev      # http://localhost:4321 で確認
+npm run build    # 本番ビルド（distフォルダに出力）
+```
